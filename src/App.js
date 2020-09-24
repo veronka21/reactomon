@@ -14,7 +14,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=10')
+    axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1050')
       .then((response) => this.setState({ pokemons: response.data.results }))
     axios.get('https://pokeapi.co/api/v2/type')
       .then(response => this.setState({ types : response.data.results }))
