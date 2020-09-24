@@ -9,12 +9,15 @@ import PokemonDetails from "./components/PokemonDetails";
 
 class App extends Component {
   state = {
-    pokemons: []
+    pokemons: [],
+    types: []
   };
 
   componentDidMount() {
     axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=10')
       .then((response) => this.setState({ pokemons: response.data.results }))
+    axios.get('https://pokeapi.co/api/v2/type')
+      .then(response => this.setState({ types : response.data.results }))
   }
 
   render() {
@@ -37,7 +40,11 @@ class App extends Component {
                 <PokemonList pokemons={this.state.pokemons} />
               </React.Fragment>
             )} />
-            <Route path="/types" component={TypeList} />
+            <Route path="/types" render={(props) => (
+              <React.Fragment>
+                <TypeList types={this.state.types} />
+              </React.Fragment>
+            )} />
             <Route path="/pokemon" render={(props) => (
               <React.Fragment>
                 <PokemonDetails />
