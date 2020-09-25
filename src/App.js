@@ -8,19 +8,8 @@ import axios from "axios";
 import PokemonDetails from "./components/PokemonDetails";
 
 const App = (props) => {
-  // state = {
-  //   pokemons: [],
-  //   types: []
-  // };
   const [pokemons, setPokemons] = useState([]);
   const [types, setTypes] = useState([]);
-
-  // componentDidMount() {
-  //   axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1050')
-  //     .then((response) => this.setState({ pokemons: response.data.results }))
-  //   axios.get('https://pokeapi.co/api/v2/type')
-  //     .then(response => this.setState({ types : response.data.results }))
-  // }
 
   useEffect(() => {
     axios
