@@ -1,13 +1,10 @@
-import React, { Component } from 'react'
+import React from "react";
 
-export class Abilities extends Component {
-    render() {
-        let key = `a${this.props.id}`
-        return (this.props.abilities.map(ability => (
-        <li key={key}>{ability.ability.name}</li>
-        ))
-        )
-    }
-}
+const Abilities = (props) => {
+  let key = `a${props.id}`;
+  return props.abilities.map((ability) => (
+    <li key={key}>{ability.ability.name}</li>
+  ));
+};
 
-export default Abilities
+export default Abilities;
