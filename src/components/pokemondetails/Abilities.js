@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 
 export class Abilities extends Component {
     render() {
+        let key = `a${this.props.id}`
         return (this.props.abilities.map(ability => (
-        <li key={this.props.id}>{ability.ability.name}</li>
+        <li key={key}>{ability.ability.name}</li>
         ))
         )
     }
