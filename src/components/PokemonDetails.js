@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Abilities from "./pokemondetails/Abilities";
+import Details from '../elements/Details'
 
 const PokemonDetails = (props) => {
   const [abilities, setAbilities] = useState([]);
@@ -21,13 +22,21 @@ const PokemonDetails = (props) => {
   }, []);
 
   return (
-    <div>
-      <img src={picture} alt="pokemon" />
-      <p>Name: {name}</p>
+    <div style={detailStyle}>
+      <img src={picture} alt="pokemon" style={imageStyle} />
+      <Details><p>Name: {name}</p>
       <p>Abilities:</p>
-      <Abilities abilities={abilities} id={pokemonId} />
+      <Abilities abilities={abilities} id={pokemonId} /></Details>
     </div>
   );
 };
 
 export default PokemonDetails;
+
+const detailStyle = {
+  backgroundImage: "url('https://i.pinimg.com/originals/3c/07/4a/3c074a911d21959311672c676c226812.jpg')"
+}
+
+const imageStyle = {
+  width: '370px'
+}

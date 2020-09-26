@@ -6,6 +6,8 @@ import PokemonList from "./components/PokemonList";
 import TypeList from "./components/TypeList";
 import axios from "axios";
 import PokemonDetails from "./components/PokemonDetails";
+import CardContainer from './elements/CardContainer';
+import Card from './elements/Card';
 
 const App = (props) => {
   const [pokemons, setPokemons] = useState([]);
@@ -13,7 +15,7 @@ const App = (props) => {
 
   useEffect(() => {
     axios
-      .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1050")
+      .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=36")
       .then((response) => setPokemons(response.data.results));
     axios
       .get("https://pokeapi.co/api/v2/type")
@@ -23,8 +25,10 @@ const App = (props) => {
   return (
     <Router>
       <div className="App">
+        
         <div className="container">
           <Navbar />
+          <CardContainer>
           <Route
             exact
             path="/"
@@ -48,14 +52,18 @@ const App = (props) => {
               </React.Fragment>
             )}
           />
+          
           <Route
             path="/types"
             render={(props) => (
+              <Card>
               <React.Fragment>
                 <TypeList types={types} />
               </React.Fragment>
+              </Card>
             )}
           />
+          </CardContainer>
           <Route
             path="/pokemon"
             render={(props) => (

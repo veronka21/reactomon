@@ -26,7 +26,7 @@ function Navbar() {
 export default Navbar;
 
 const headerStyle = {
-  background: "#9c9b94",
+  background: "#faf87d",
   color: "#fff",
   textAlign: "center",
   padding: "10px",
