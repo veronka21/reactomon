@@ -8,6 +8,7 @@ import axios from "axios";
 import PokemonDetails from "./components/PokemonDetails";
 import CardContainer from './elements/CardContainer';
 import Card from './elements/Card';
+import { DarkModeProvider } from './contexts/DarkModeContext';
 
 const App = (props) => {
   const [pokemons, setPokemons] = useState([]);
@@ -25,7 +26,7 @@ const App = (props) => {
   return (
     <Router>
       <div className="App">
-        
+        <DarkModeProvider>
         <div className="container">
           <Navbar />
           <CardContainer>
@@ -73,8 +74,10 @@ const App = (props) => {
             )}
           />
         </div>
+        </DarkModeProvider>
       </div>
     </Router>
+    
   );
 };
 
