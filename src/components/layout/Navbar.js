@@ -1,36 +1,47 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { DarkModeContext } from '../../contexts/DarkModeContext';
+import styled from 'styled-components';
 
 function Navbar() {
+  const [darkMode, setDarkMode] = useContext(DarkModeContext);
+  // const [backGroundColor, setBackGroundColor] = useState(darkMode ? "black" : "#faf87d");
+
+  const switchTheme = () => {
+    setDarkMode(darkMode ? false : true);
+  }
+
+  const Header = styled.header`
+  background: ${(darkMode ? "black" : "#faf87d")};
+  color: #fff;
+  textAlign: center;
+  padding: 10px
+`
+
   return (
-    <header style={headerStyle}>
-      <p>
+    <Header>
+      <button style={buttonStyle} onClick={switchTheme}>Theme switcher</button>
         <a href="https://fontmeme.com/pokemon-font/">
           <img
             src="https://fontmeme.com/permalink/200923/0a2e87f0b608ca69c930c125a401e40a.png"
             alt="pokemon-font"
-            border="0"
           ></img>
         </a>
-      </p>
+      <br/>
+      <br/>
       <Link style={linkStyle} to="/pokemons">
         Pokemons
       </Link>
       <Link style={linkStyle} to="/types">
         Types
       </Link>
-    </header>
+      <br/>
+      <br/>
+    </Header>
   );
 }
 
 export default Navbar;
-
-const headerStyle = {
-  background: "#faf87d",
-  color: "#fff",
-  textAlign: "center",
-  padding: "10px",
-};
 
 const linkStyle = {
   textDecoration: "none",
@@ -40,3 +51,11 @@ const linkStyle = {
   borderRadius: "40%",
   margin: "20px",
 };
+
+const buttonStyle = {
+  position: "absolute",
+  right: "0",
+  top: "0",
+  margin: "10px"
+  // float: 'right'
+}

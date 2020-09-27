@@ -25,8 +25,8 @@ const App = (props) => {
 
   return (
     <Router>
+      <DarkModeProvider>
       <div className="App">
-        <DarkModeProvider>
         <div className="container">
           <Navbar />
           <CardContainer>
@@ -74,8 +74,8 @@ const App = (props) => {
             )}
           />
         </div>
-        </DarkModeProvider>
       </div>
+      </DarkModeProvider>
     </Router>
     
   );
