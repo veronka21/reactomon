@@ -15,7 +15,7 @@ const Card = (props) => {
     display: block;
     margin: 20px;
 `
-return <Card>{props.children}</Card>
+    return <Card>{props.children}</Card>
 }
 
 export default Card;
