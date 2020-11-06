@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Abilities from "./pokemondetails/Abilities";
-import Details from '../elements/Details'
+import Details from '../elements/Details';
 
 const PokemonDetails = (props) => {
   const [abilities, setAbilities] = useState([]);

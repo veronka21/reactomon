@@ -12,7 +12,7 @@ function Navbar() {
   }
 
   const Header = styled.header`
-  background: ${(darkMode ? "black" : "#faf87d")};
+  background: ${(darkMode ? "#291515" : "#faf87d")};
   color: #fff;
   textAlign: center;
   padding: 10px
