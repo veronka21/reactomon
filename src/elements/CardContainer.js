@@ -8,19 +8,21 @@ const CardContainer = (props) => {
 
     const background = darkMode ? "" : `url(${Background})`;
 
-    const FormattedDiv = styled.div`
+    const color = darkMode ? "#5c3131" : "white";
+    
+    return <FormattedDiv color={color} background={background}>{props.children}</FormattedDiv>;
+}
+
+export default CardContainer;
+
+const FormattedDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    background: ${(darkMode ? "#5c3131" : "white")};
-    background-image: ${background};
+    background: ${props => props.color};
+    background-image: ${props => props.background};
     `
-
-return <FormattedDiv>{props.children}</FormattedDiv>;
-}
-
-export default CardContainer;
 
 // background-image: url(${Background});
 // background: ${(darkMode ? "black" : "darkgrey")};

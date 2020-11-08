@@ -31,6 +31,7 @@ const PokemonDetails = (props) => {
   return (
     <div style={detailStyle}>
       <img src={picture} alt="pokemon" style={imageStyle} />
+      <p><button>Catch!</button></p>
       <Details><p>Name: {name}</p>
       <p>Abilities:</p>
       <Abilities abilities={abilities} id={pokemonId} /></Details>
@@ -39,8 +40,6 @@ const PokemonDetails = (props) => {
 };
 
 export default PokemonDetails;
-
-
 
 const imageStyle = {
   width: '370px'

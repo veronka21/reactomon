@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Card from '../elements/Card';
+import { CaughtPokemonContext } from "../contexts/CaughtPokemonContext";
 
 const PokemonListItem = (props) => {
   let url = props.pokemon.url;
@@ -11,6 +12,7 @@ const PokemonListItem = (props) => {
 
   const [picture, setPicture] = useState("");
   const [pokemonId] = useState(id);
+  const [caughtPokemons, setCaughtPokemons] = useContext(CaughtPokemonContext);
 
   useEffect(() => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
@@ -19,10 +21,17 @@ const PokemonListItem = (props) => {
       })
   }, [pokemonId])
 
+  const catchPokemon = () => {
+    console.log(caughtPokemons);
+    setCaughtPokemons([...caughtPokemons, {"pokemonId": id, "image": picture}]);
+    console.log(caughtPokemons);
+  }
+
   return (
     <Card>
       <img src={picture} alt="pokemon" style={imageStyle} />
       <p><Link to={link} style={linkStyle}>{props.pokemon.name}</Link></p>
+      <p><button onClick={catchPokemon}>Catch!</button></p>
     </Card>
   );
 };

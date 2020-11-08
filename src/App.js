@@ -9,7 +9,7 @@ import PokemonDetails from "./components/PokemonDetails";
 import CardContainer from "./elements/CardContainer";
 import Card from "./elements/Card";
 import { DarkModeContext, DarkModeProvider } from "./contexts/DarkModeContext";
-import styled from "styled-components";
+import { CaughtPokemonContext, CaughtPokemonProvider } from "./contexts/CaughtPokemonContext";
 
 const App = (props) => {
   const [pokemons, setPokemons] = useState([]);
@@ -38,55 +38,57 @@ const App = (props) => {
   return (
     <Router>
       <DarkModeProvider>
-        <div className="App">
-          <div className="container">
-            <Navbar />
-            <CardContainer>
-              <Route
-                exact
-                path="/"
-                render={(props) => (
-                  <React.Fragment>
-                    <a href="https://fontmeme.com/pokemon-font/">
-                      <img
-                        src="https://fontmeme.com/permalink/200923/64a5747ca4c11cd909788e77c68af367.png"
-                        alt="pokemon-font"
-                        border="0"
-                      ></img>
-                    </a>
-                  </React.Fragment>
-                )}
-              />
-              <Route
-                path="/pokemons"
-                render={(props) => (
-                  <React.Fragment>
-                    <PokemonList pokemons={pokemons} />
-                  </React.Fragment>
-                )}
-              />
-
-              <Route
-                path="/types"
-                render={(props) => (
-                  <Card>
+        <CaughtPokemonProvider>
+          <div className="App">
+            <div className="container">
+              <Navbar />
+              <CardContainer>
+                <Route
+                  exact
+                  path="/"
+                  render={(props) => (
                     <React.Fragment>
-                      <TypeList types={types} />
+                      <a href="https://fontmeme.com/pokemon-font/">
+                        <img
+                          src="https://fontmeme.com/permalink/200923/64a5747ca4c11cd909788e77c68af367.png"
+                          alt="pokemon-font"
+                          border="0"
+                        ></img>
+                      </a>
                     </React.Fragment>
-                  </Card>
+                  )}
+                />
+                <Route
+                  path="/pokemons"
+                  render={(props) => (
+                    <React.Fragment>
+                      <PokemonList pokemons={pokemons} />
+                    </React.Fragment>
+                  )}
+                />
+
+                <Route
+                  path="/types"
+                  render={(props) => (
+                    <Card>
+                      <React.Fragment>
+                        <TypeList types={types} />
+                      </React.Fragment>
+                    </Card>
+                  )}
+                />
+              </CardContainer>
+              <Route
+                path="/pokemon"
+                render={(props) => (
+                  <React.Fragment>
+                    <PokemonDetails />
+                  </React.Fragment>
                 )}
               />
-            </CardContainer>
-            <Route
-              path="/pokemon"
-              render={(props) => (
-                <React.Fragment>
-                  <PokemonDetails />
-                </React.Fragment>
-              )}
-            />
+            </div>
           </div>
-        </div>
+        </CaughtPokemonProvider>
       </DarkModeProvider>
     </Router>
   );
