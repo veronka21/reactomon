@@ -10,7 +10,7 @@ const PokemonDetails = (props) => {
   const [picture, setPicture] = useState("");
   const [name, setName] = useState("");
   const [pokemonId, setPokemonId] = useState("");
-  const [darkMode, setDarkMode] = useContext(DarkModeContext);
+  const darkMode = useContext(DarkModeContext)[0];
   const [caughtPokemons, setCaughtPokemons] = useContext(CaughtPokemonContext);
 
   useEffect(() => {
@@ -26,7 +26,19 @@ const PokemonDetails = (props) => {
   }, []);
 
   const catchPokemon = () => {
-    setCaughtPokemons([...caughtPokemons, {"pokemonId": pokemonId, "image": picture, "name": name}])
+    if (!getCaughtPokemonIds().includes(pokemonId)) {
+      setCaughtPokemons([...caughtPokemons, {"pokemonId": pokemonId, "image": picture, "name": name}]);
+    } else {
+      window.alert("You already caught this little guy!");
+    }
+  }
+
+  const getCaughtPokemonIds = () => {
+    let ids = [];
+    for (let pokemon of caughtPokemons) {
+      ids.push(pokemon.pokemonId)
+    }
+    return ids
   }
 
   const detailStyle = {
