@@ -26,7 +26,7 @@ const PokemonDetails = (props) => {
   }, []);
 
   const catchPokemon = () => {
-    setCaughtPokemons([...caughtPokemons, {"pokemonId": pokemonId, "image": picture}])
+    setCaughtPokemons([...caughtPokemons, {"pokemonId": pokemonId, "image": picture, "name": name}])
   }
 
   const detailStyle = {

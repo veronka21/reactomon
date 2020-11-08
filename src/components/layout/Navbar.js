@@ -31,6 +31,9 @@ function Navbar() {
         <Link style={linkStyle} to="/types">
           Types
         </Link>
+        <Link style={linkStyle} to="/caught">
+          Caught pokemons
+        </Link>
       <br />
       <br />
     </Header>

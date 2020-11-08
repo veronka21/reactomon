@@ -8,6 +8,7 @@ import axios from "axios";
 import PokemonDetails from "./components/PokemonDetails";
 import CardContainer from "./elements/CardContainer";
 import Card from "./elements/Card";
+import CaughtPokemonList from "./components/CaughtPokemonList";
 import { DarkModeContext, DarkModeProvider } from "./contexts/DarkModeContext";
 import { CaughtPokemonContext, CaughtPokemonProvider } from "./contexts/CaughtPokemonContext";
 
@@ -83,6 +84,14 @@ const App = (props) => {
                 render={(props) => (
                   <React.Fragment>
                     <PokemonDetails />
+                  </React.Fragment>
+                )}
+              />
+              <Route
+                path="/caught"
+                render={(props) => (
+                  <React.Fragment>
+                    <CaughtPokemonList />
                   </React.Fragment>
                 )}
               />

@@ -22,9 +22,7 @@ const PokemonListItem = (props) => {
   }, [pokemonId])
 
   const catchPokemon = () => {
-    console.log(caughtPokemons);
-    setCaughtPokemons([...caughtPokemons, {"pokemonId": id, "image": picture}]);
-    console.log(caughtPokemons);
+    setCaughtPokemons([...caughtPokemons, {"pokemonId": id, "image": picture, "name": props.pokemon.name}]);
   }
 
   return (
