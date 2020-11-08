@@ -87,6 +87,7 @@ const App = (props) => {
                   </React.Fragment>
                 )}
               />
+              <CardContainer>
               <Route
                 path="/caught"
                 render={(props) => (
@@ -95,6 +96,7 @@ const App = (props) => {
                   </React.Fragment>
                 )}
               />
+              </CardContainer>
             </div>
           </div>
         </CaughtPokemonProvider>
