@@ -3,6 +3,7 @@ import axios from "axios";
 import Abilities from "./pokemondetails/Abilities";
 import Details from '../elements/Details';
 import { DarkModeContext } from "../contexts/DarkModeContext";
+import { CaughtPokemonContext } from "../contexts/CaughtPokemonContext";
 
 const PokemonDetails = (props) => {
   const [abilities, setAbilities] = useState([]);
@@ -10,6 +11,7 @@ const PokemonDetails = (props) => {
   const [name, setName] = useState("");
   const [pokemonId, setPokemonId] = useState("");
   const [darkMode, setDarkMode] = useContext(DarkModeContext);
+  const [caughtPokemons, setCaughtPokemons] = useContext(CaughtPokemonContext);
 
   useEffect(() => {
     let path = window.location.pathname;
@@ -23,6 +25,10 @@ const PokemonDetails = (props) => {
     });
   }, []);
 
+  const catchPokemon = () => {
+    setCaughtPokemons([...caughtPokemons, {"pokemonId": pokemonId, "image": picture}])
+  }
+
   const detailStyle = {
     background: darkMode ? "#5c3131" : "white",
     backgroundImage: darkMode ? "" : "url('https://i.pinimg.com/originals/3c/07/4a/3c074a911d21959311672c676c226812.jpg')"
@@ -31,7 +37,7 @@ const PokemonDetails = (props) => {
   return (
     <div style={detailStyle}>
       <img src={picture} alt="pokemon" style={imageStyle} />
-      <p><button>Catch!</button></p>
+      <p><button onClick={catchPokemon}>Catch!</button></p>
       <Details><p>Name: {name}</p>
       <p>Abilities:</p>
       <Abilities abilities={abilities} id={pokemonId} /></Details>
